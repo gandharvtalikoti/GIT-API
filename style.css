@@ -13,6 +13,12 @@ form {
   padding: 20px;
 }
 
+.profile-image {
+  border-radius: 50%;
+  width: 200px; /* Adjust the width and height as needed */
+  height: 200px;
+  object-fit: cover;
+}
 
 .repository {
   border-radius: 20px;
