@@ -8,3 +8,19 @@ form {
   width: 400px;
   margin: auto;
 }
+
+
+.repository {
+  border-radius: 20px;
+  padding: 10px;
+  border: none;
+  background-color: #dcf2f1;
+  margin-bottom: 10px;
+  width: 48%; /* Set the width for each repository item */
+  margin: 1%; /* Add some margin to create space between items */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+#repositoriesContainer {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+}
