@@ -1,4 +1,3 @@
-
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -8,17 +7,18 @@ body {
   margin-top: 20px;
 }
 
-form{
+form {
   width: 500px;
   margin: auto;
   padding: 20px;
 }
 
+
 .repository {
   border-radius: 20px;
   padding: 10px;
   border: none;
-  background-color: #E0F4FF;
+  background-color: #e0f4ff;
   margin-bottom: 10px;
   width: 48%; /* Set the width for each repository item */
   margin: 1%; /* Add some margin to create space between items */
