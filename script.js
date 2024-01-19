@@ -9,18 +9,43 @@ $(document).ready(function () {
         event.preventDefault();
         const username = $("#username").val().trim();
         if (username) {
-            const userLink = `<a href="https://github.com/${username}" target="_blank">${username}</a>`;
-            repositoriesContainer.prev("h1").remove();
-            repositoriesContainer.before(`<h1 class="mt-3">Public Repositories of ${userLink}</h1>`);
-            fetchRepositories(username);
+            // Fetch user details including profile picture
+            fetchUserDetails(username);
         } else {
             const error = "Invalid GitHub username.";
             repositoriesContainer.prev("h1").remove();
+            repositoriesContainer.prev(".profile-image").remove(); // Remove previous profile image
             repositoriesContainer.before(`<h1 class="mt-3">${error}</h1>`);
             console.error("Invalid GitHub username.");
         }
     });
-
+    
+    function fetchUserDetails(username) {
+        // Fetch user details including profile picture
+        $.ajax({
+            url: `https://api.github.com/users/${username}`,
+            success: function (user) {
+                console.log(user);
+                const userLink = `<a href="${user.html_url}" target="_blank">${username}</a>`;
+                const profileImage = `<div style="display: flex; flex-direction: col; align-items: center; margin-top:20px;"><img src="${user.avatar_url}" alt="Profile Image" class="mb-3 profile-image"><div style="margin-left:40px;"><h6>Name: ${user.name}</h6><h6>Bio: ${user.bio}</h6><h6>Location: ${user.location}</h6><h6>Social: ${user.link}</h6></div></div>`;
+                
+                repositoriesContainer.prev("h1").remove();
+                repositoriesContainer.prev(".profile-image").remove(); // Remove previous profile image
+                repositoriesContainer.before(`<h1 class="mt-3">Public Repositories of ${userLink} ${profileImage}</h1>`);
+                
+                // Now, fetch and display repositories
+                fetchRepositories(username);
+            },
+            error: function (error) {
+                const errorMessage = "Invalid git username";
+                repositoriesContainer.prev("h1").remove();
+                repositoriesContainer.prev(".profile-image").remove(); // Remove previous profile image
+                repositoriesContainer.before(`<h1 class="mt-3">${errorMessage}</h1>`);
+                console.error(errorMessage, error);
+            },
+        });
+    }
+    
     $("#reposPerPage").change(function () {
         fetchRepositories($("#username").val().trim());
     });
