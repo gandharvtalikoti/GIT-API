@@ -1,14 +1,18 @@
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
 }
 
-form {
-  padding: 20px;
-  width: 400px;
-  margin: auto;
+.pagination {
+  margin-top: 20px;
 }
 
+form{
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+}
 
 .repository {
   border-radius: 20px;
