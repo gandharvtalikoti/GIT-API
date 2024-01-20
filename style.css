@@ -3,12 +3,28 @@ body {
   margin: 20px;
 }
 
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+
+#starter {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  display: block;
+  margin: auto;
+}
+
+/* Add your existing CSS styles here */
+
 .pagination {
   margin-top: 20px;
 }
 
 form {
-  width: 500px;
+  max-width: 500px;
   margin: auto;
   padding: 20px;
 }
@@ -29,8 +45,11 @@ form {
   width: 48%; /* Set the width for each repository item */
   margin: 1%; /* Add some margin to create space between items */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  flex-wrap: wrap;
 }
+
 #repositoriesContainer {
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap to the next line */
+  position: relative;
 }
